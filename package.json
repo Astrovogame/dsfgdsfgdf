@@ -1,0 +1,13 @@
+{
+  "name": "kraken-io",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Snake.io-achtig browser-spel met optionele online PvP via WebSocket.",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "express": "^4.19.2",
+    "ws": "^8.18.0"
+  }
+}

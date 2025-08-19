@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Kraken.io</title>
+  <link rel="icon" href="assets/logo.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="style.css"/>
+</head>
+<body>
+  <div id="game-root">
+    <canvas id="game"></canvas>
+
+    <div id="hud" class="hidden">
+      <div class="hud-left">
+        <div class="pill"><span>Lengte:</span> <b id="lenLabel">0</b></div>
+        <div class="pill"><span>Orbs:</span> <b id="orbLabel">0</b></div>
+        <div class="pill"><span>Power-up:</span> <b id="powerLabel">—</b></div>
+      </div>
+      <div class="hud-right">
+        <div class="pill"><span>Coins:</span> <b id="coinLabel">0</b></div>
+        <button id="pauseBtn" class="btn small">Pauze</button>
+      </div>
+    </div>
+
+    <!-- Menu -->
+    <div id="menu" class="overlay">
+      <div class="card">
+        <h1>🐙 Kraken.io</h1>
+        <p class="muted">Snake.io-achtig arena-spel met bots én optionele online modus.</p>
+
+        <div class="row">
+          <label>Naam:</label>
+          <input id="playerName" placeholder="Anonieme Kraken" maxlength="16"/>
+        </div>
+
+        <div class="row">
+          <label>Moeilijkheid:</label>
+          <select id="difficulty">
+            <option value="easy">Easy</option>
+            <option value="normal" selected>Normal</option>
+            <option value="hard">Hard</option>
+          </select>
+        </div>
+
+        <div class="row">
+          <label>Besturing:</label>
+          <select id="controlMode">
+            <option value="mouse">Muis / Touch (aanbevolen)</option>
+            <option value="keys">Toetsen (WASD / Pijltjes)</option>
+          </select>
+        </div>
+
+        <div class="row">
+          <label><input id="onlineToggle" type="checkbox"> Online (spelers zichtbaar & PvP)</label>
+        </div>
+
+        <div class="row">
+          <button id="startBtn" class="btn primary">Starten</button>
+          <button id="shopBtn" class="btn">Shop</button>
+          <button id="scoresBtn" class="btn">Highscores</button>
+          <button id="settingsBtn" class="btn">Instellingen</button>
+        </div>
+
+        <div class="row muted small">
+          <p>Controls: <b>Spatie</b> Grab • <b>Shift</b> Turbo • <b>E</b> Inktwolk. Bots en obstakels werken offline. PvP werkt als je online aanzet (op Replit/Node).</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Shop -->
+    <div id="shop" class="overlay hidden">
+      <div class="card">
+        <h2>🛒 Shop</h2>
+        <p>Verdien coins en koop cosmetics. Alles wordt lokaal opgeslagen.</p>
+        <div id="coinRow" class="row"><b>Coins:</b> <span id="coinsShop">0</span></div>
+
+        <h3>Tentakelkleuren</h3>
+        <div class="grid" id="colorsGrid"></div>
+
+        <h3>Hoofd-accessoires</h3>
+        <div class="grid" id="hatsGrid"></div>
+
+        <div class="row">
+          <button id="backToMenu1" class="btn">Terug</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Settings -->
+    <div id="settings" class="overlay hidden">
+      <div class="card">
+        <h2>⚙️ Instellingen</h2>
+        <div class="row">
+          <label><input type="checkbox" id="musicToggle"> Muziek</label>
+        </div>
+        <div class="row">
+          <label><input type="checkbox" id="sfxToggle" checked> Geluidseffecten</label>
+        </div>
+        <div class="row">
+          <button id="backToMenu2" class="btn">Terug</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Scores -->
+    <div id="scores" class="overlay hidden">
+      <div class="card">
+        <h2>🏆 Highscores</h2>
+        <ul id="hsList"></ul>
+        <div class="row">
+          <button id="backToMenu3" class="btn">Terug</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Pause -->
+    <div id="paused" class="overlay hidden">
+      <div class="card">
+        <h2>Pauze</h2>
+        <div class="row">
+          <button id="resumeBtn" class="btn primary">Doorgaan</button>
+          <button id="quitBtn" class="btn">Stoppen</button>
+        </div>
+        <p class="small muted">Spatie: Grab • Shift: Turbo • E: Inktwolk.</p>
+      </div>
+    </div>
+
+    <!-- Game over -->
+    <div id="gameOver" class="overlay hidden">
+      <div class="card">
+        <h2>Game Over</h2>
+        <p><b>Score:</b> <span id="finalScore">0</span></p>
+        <p><b>Coins verdiend:</b> <span id="finalCoins">0</span></p>
+        <div class="row">
+          <button id="againBtn" class="btn primary">Opnieuw</button>
+          <button id="goMenuBtn" class="btn">Menu</button>
+        </div>
+      </div>
+    </div>
+
+  </div>
+  <script src="script.js"></script>
+</body>
+</html>
